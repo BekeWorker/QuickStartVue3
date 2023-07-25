@@ -1,5 +1,10 @@
 <template>
-  <div>NavHeader</div>
+  <div class="nav-wrap">
+    <div class="nav-left">
+      <div class="nav-logo"></div>
+    </div>
+    <div class="nav-right"></div>
+  </div>
 </template>
 
 <script lang="ts">

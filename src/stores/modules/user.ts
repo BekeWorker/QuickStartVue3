@@ -111,8 +111,9 @@ export const useUserStore = defineStore({
             ]
           }
         ]
+
+        // 默认路由的个数
         if (router.getRoutes().length <= 2) {
-          // 默认路由的个数
           handleMenu(userMenus)?.map((route) => {
             router.addRoute(route)
           })
