@@ -4,13 +4,20 @@ export interface Result<T = any> {
 }
 
 export interface UserInfo {
-  id: string | number
+  loginUser: {
+    name: string
+    email: string
+    username: string
+  }
+  logoutUrl: string
+}
+
+export interface UserMenu {
+  children?: UserMenu[]
+  desc: string
+  icon?: string
+  id: number
   name: string
-  realname: string
-  cellphone: number
-  enable: number
-  createAt: Date
-  updateAt: Date
-  role: Role
-  department: Department
+  parentId: number
+  url: string
 }

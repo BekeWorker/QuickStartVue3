@@ -1,5 +1,5 @@
 import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse } from 'axios'
-import { type Result } from './types'
+import { type Result } from './types.d'
 
 class Request {
   private instance: AxiosInstance

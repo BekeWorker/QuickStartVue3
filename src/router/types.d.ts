@@ -1,11 +1,11 @@
-export interface MenuItem<T = any> {
+export interface IMenu {
   name: string
-  children: T
-  cpnPath?: string
+  children: any[]
+  fullPath?: string
 }
-export interface RouteItem<T = any> {
+export interface IRoute {
   path: string
-  children: T
+  children?: any[]
   redirect?: string
   component?: () => void
 }
