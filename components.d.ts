@@ -10,7 +10,10 @@ declare module 'vue' {
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElDropdown: typeof import('element-plus/es')['ElDropdown']
+    ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
     ElHeader: typeof import('element-plus/es')['ElHeader']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
     ElMain: typeof import('element-plus/es')['ElMain']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
@@ -25,6 +28,7 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     Src: typeof import('./src/components/base/nav-header/src/index.vue')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
+    UserInfo: typeof import('./src/components/base/nav-header/src/user-info.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }
 }

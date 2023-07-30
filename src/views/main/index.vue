@@ -1,15 +1,13 @@
 <template>
-  <div class="main">
+  <div class="main-wrap">
     <el-container class="main-content">
-      <el-aside width="">
-        <nav-menu :collapse="isCollapse" />
-      </el-aside>
-    </el-container>
-    <el-container>
       <el-header>
         <nav-header @foldClick="handleFoldClick" />
       </el-header>
       <el-container>
+        <el-aside :width="isCollapse ? '62px' : '210px'">
+          <nav-menu :collapse="isCollapse" />
+        </el-aside>
         <el-main>
           <router-view />
         </el-main>
@@ -20,9 +18,14 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import NavHeader from '@/components/base/nav-header'
+import NavMenu from '@/components/base/nav-menu'
 export default defineComponent({
   name: 'MainIndex',
-  components: {},
+  components: {
+    NavHeader,
+    NavMenu
+  },
   setup() {
     const isCollapse = ref(false)
     const handleFoldClick = (isFold: boolean) => {
@@ -36,4 +39,36 @@ export default defineComponent({
 })
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.main-wrap {
+  background: #f5f8fc;
+  .el-header {
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+  }
+  .el-aside {
+    overflow-x: hidden;
+    overflow-y: auto;
+    line-height: 200px;
+    text-align: left;
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: width 0.3s linear;
+    scrollbar-width: none; /* firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .el-main {
+    padding: 0;
+    margin: 10px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 2px;
+    height: calc(100vh - 70px);
+  }
+}
+</style>
