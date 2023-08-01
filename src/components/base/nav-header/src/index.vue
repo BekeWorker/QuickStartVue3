@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-wrap">
+  <div class="nav-header">
     <div class="nav-left">
       <div class="nav-logo"></div>
     </div>
@@ -20,7 +20,7 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
-.nav-wrap {
+.nav-header {
   background: #3a3a3a;
   height: 50px;
   display: flex;

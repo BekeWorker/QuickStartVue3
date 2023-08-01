@@ -2,9 +2,8 @@ class LocalCache {
   setCache(key: string, value: any) {
     localStorage.setItem(key, JSON.stringify(value))
   }
-  getCache(key: string): string | undefined {
-    const value = localStorage.getItem(key)
-    if (value) return JSON.parse(value)
+  getCache(key: string): string | null {
+    return localStorage.getItem(key)
   }
   deleteCache(key: string) {
     localStorage.removeItem(key)

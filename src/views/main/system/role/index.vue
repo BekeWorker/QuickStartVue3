@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>RoleIndex</div>
 </template>
 
 <script lang="ts">
