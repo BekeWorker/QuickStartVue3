@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import router from '@/router'
-import { handleMenu } from '@/router/menu'
+import { handleRouteMenu } from '@/utils/menu'
 
 import type { UserInfo, UserMenu } from '@/service/types'
 import { getUserInfo, getUserMenus } from '@/service/login'
@@ -190,7 +190,7 @@ export const useUserStore = defineStore({
         this.setUserMenus(userMenus)
         // 默认路由的个数
         if (router.getRoutes().length <= 2) {
-          handleMenu(userMenus)?.map((route) => {
+          handleRouteMenu(userMenus)?.map((route) => {
             router.addRoute(route)
           })
           next({ ...to, replace: true })

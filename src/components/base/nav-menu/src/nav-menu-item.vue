@@ -51,4 +51,16 @@ export default defineComponent({
 })
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.nav-menu-item {
+  .el-menu-item {
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+  }
+  .el-menu-item:hover,
+  .el-menu-item.is-active {
+    background-color: #567cff;
+  }
+}
+</style>

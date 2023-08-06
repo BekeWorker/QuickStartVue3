@@ -4,14 +4,15 @@ export interface IMenu {
   children: any[]
   fullPath?: string
 }
-export interface IMeta {
-  name: string
-}
 export interface IRoute {
   path: string
-  meta: IMeta
-  fullPath: string
   children?: any[]
   redirect?: string
   component?: () => void
+}
+export interface INavMenu {
+  path: string
+  fullPath: string
+  meta: {}
+  children?: any[]
 }

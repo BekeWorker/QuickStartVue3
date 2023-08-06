@@ -2,11 +2,11 @@
   <div class="main-wrap">
     <el-container class="main-content">
       <el-header>
-        <nav-header @foldClick="handleFoldClick" />
+        <nav-header />
       </el-header>
       <el-container>
         <el-aside :width="isCollapse ? '62px' : '210px'">
-          <nav-menu :collapse="isCollapse" />
+          <nav-menu @foldClick="handleFoldClick" />
         </el-aside>
         <el-main>
           <router-view />
@@ -54,7 +54,7 @@ export default defineComponent({
     text-align: left;
     cursor: pointer;
     background-color: #ffffff;
-    transition: width 0.3s linear;
+    // transition: width 0.3s linear;
     scrollbar-width: none; /* firefox */
     -ms-overflow-style: none; /* IE 10+ */
 
