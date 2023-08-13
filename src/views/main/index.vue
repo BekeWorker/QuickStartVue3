@@ -50,14 +50,13 @@ export default defineComponent({
   .el-aside {
     overflow-x: hidden;
     overflow-y: auto;
-    line-height: 200px;
     text-align: left;
     cursor: pointer;
-    background-color: #ffffff;
+    height: calc(100vh - 50px);
+    background-color: #363e58;
     // transition: width 0.3s linear;
     scrollbar-width: none; /* firefox */
     -ms-overflow-style: none; /* IE 10+ */
-
     &::-webkit-scrollbar {
       display: none;
     }

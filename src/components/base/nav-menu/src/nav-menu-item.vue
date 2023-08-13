@@ -9,6 +9,7 @@
     </el-menu-item>
     <el-sub-menu v-else :index="menu.path">
       <template #title>
+        <el-icon><user /></el-icon>
         <span>{{ menu.meta.name }}</span>
       </template>
       <template v-for="cmenu in menu.children" :key="cmenu.id">
@@ -21,9 +22,12 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { User } from '@element-plus/icons-vue'
 export default defineComponent({
   name: 'NavMenuItem',
-  components: {},
+  components: {
+    User
+  },
   props: {
     menu: {
       type: Object,
@@ -61,6 +65,16 @@ export default defineComponent({
   .el-menu-item:hover,
   .el-menu-item.is-active {
     background-color: #567cff;
+  }
+}
+</style>
+<style lang="less">
+.el-menu--collapse {
+  .el-sub-menu__title {
+    span,
+    .el-sub-menu__icon-arrow {
+      display: none;
+    }
   }
 }
 </style>

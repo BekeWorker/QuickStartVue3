@@ -29,18 +29,13 @@ import { useUserStore } from '@/stores/modules/user'
 export default defineComponent({
   name: 'NavMenu',
   components: {},
-  props: {
-    collapse: {
-      type: Boolean,
-      default: false
-    }
-  },
+  props: {},
   emits: ['foldClick'],
   setup(props, { emit, slots }) {
     const route = useRoute()
     const menus = handleNavMenu(useUserStore().getUserMenus)
     const menuList = ref(menus[0].children || menus)
-    const isCollapse = ref(props.collapse)
+    const isCollapse = ref(false)
     let currentActiveMenu = ref('')
     watch(
       () => route.path,
