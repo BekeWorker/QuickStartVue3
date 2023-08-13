@@ -7,7 +7,12 @@
         <span class="name">比克哈哈</span>
       </div>
       <template #dropdown>
-        <el-dropdown-item>Action 1</el-dropdown-item>
+        <el-dropdown-item
+          v-for="{ command, lable } in commandList"
+          :key="command"
+          :command="command"
+          >{{ lable }}</el-dropdown-item
+        >
       </template>
     </el-dropdown>
   </div>
@@ -24,10 +29,21 @@ export default defineComponent({
   },
   setup() {
     const userInfo = useUserStore().getUserInfo
-    const handleCommand = (command) => {}
+    const commandList = [{ command: 'logout', lable: '注销账号' }]
+    const handleCommand = (command: string) => {
+      switch (command) {
+        case 'logout':
+          window.location.href = userInfo.logoutUrl
+          break
+
+        default:
+          break
+      }
+    }
     return {
       userInfo,
-      handleCommand
+      handleCommand,
+      commandList
     }
   }
 })

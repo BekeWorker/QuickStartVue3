@@ -23,6 +23,7 @@
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { User } from '@element-plus/icons-vue'
+import type { UserMenu } from '@/service/types'
 export default defineComponent({
   name: 'NavMenuItem',
   components: {
@@ -38,7 +39,7 @@ export default defineComponent({
   },
   setup(props, { emit, slots }) {
     const router = useRouter()
-    const handleClick = (type, value) => {
+    const handleClick = (type: string, value: UserMenu) => {
       switch (type) {
         case '子菜单':
           router.push({ path: '/' + value.fullPath })
