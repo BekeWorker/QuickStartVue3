@@ -34,7 +34,7 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const route = useRoute()
     const menus = handleNavMenu(useUserStore().getUserMenus)
-    const menuList = ref(menus[0].children || menus)
+    const menuList = ref(menus.length ? menus[0].children : menus)
     const isCollapse = ref(false)
     let currentActiveMenu = ref('')
     watch(

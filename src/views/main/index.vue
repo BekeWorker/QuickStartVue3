@@ -18,8 +18,8 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import NavHeader from '@/components/base/nav-header'
-import NavMenu from '@/components/base/nav-menu'
+import NavHeader from '@/components/common/nav-header'
+import NavMenu from '@/components/common/nav-menu'
 export default defineComponent({
   name: 'MainIndex',
   components: {

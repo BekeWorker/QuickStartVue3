@@ -18,10 +18,10 @@ declare module 'vue' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     Login: typeof import('./src/components/login/index.vue')['default']
-    NavMenuItem: typeof import('./src/components/base/nav-menu/src/nav-menu-item.vue')['default']
+    NavMenuItem: typeof import('./src/components/common/nav-menu/src/nav-menu-item.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Src: typeof import('./src/components/base/nav-header/src/index.vue')['default']
-    UserInfo: typeof import('./src/components/base/nav-header/src/user-info.vue')['default']
+    Src: typeof import('./src/components/base/table/src/index.vue')['default']
+    UserInfo: typeof import('./src/components/common/nav-header/src/user-info.vue')['default']
   }
 }
