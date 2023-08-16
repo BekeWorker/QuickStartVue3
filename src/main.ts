@@ -1,5 +1,5 @@
 import 'normalize.css'
-import './assets/style/reset.css'
+import './assets/style/index.less'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

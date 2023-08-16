@@ -52,7 +52,7 @@ export default defineComponent({
 <style lang="less" scoped>
 .user-info-wrap {
   padding-right: 10px;
-  font-family: PingFangSc-Regular, sans-serif;
+  font-family: PingFangSC-Regular, sans-serif;
   :focus-visible {
     outline: none;
   }
