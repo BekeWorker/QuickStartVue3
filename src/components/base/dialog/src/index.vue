@@ -4,6 +4,7 @@
       v-model="dialogData.visible"
       :title="dialogData.title"
       :width="dialogData.width"
+      destroy-on-close
       center
     >
       <slot name="content"></slot>
