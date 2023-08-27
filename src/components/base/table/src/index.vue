@@ -11,6 +11,17 @@
         </el-table-column>
       </template>
     </el-table>
+    <div class="pagination-wrap" v-if="showPagination">
+      <el-pagination
+        small
+        background
+        :total="total"
+        :page-sizes="pageSizes"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        layout="total, prev, pager, next, sizes"
+      />
+    </div>
   </div>
 </template>
 
@@ -35,5 +46,10 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .base-table-wrap {
+  .pagination-wrap {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 16px;
+  }
 }
 </style>

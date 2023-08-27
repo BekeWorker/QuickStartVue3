@@ -31,9 +31,13 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+
 import BaseTable from '@/components/base/table'
 import BaseDialog from '@/components/base/dialog'
 import BaseForm from '@/components/base/form'
+
+import useTableOptions from './config/table'
+
 export default defineComponent({
   name: 'GoodsIndex',
   components: {
@@ -42,17 +46,12 @@ export default defineComponent({
     BaseForm
   },
   setup() {
-    const initData = () => {}
-    const handleSizeChange = (val: number) => {
-      tableOptions.value.pageNum = 1
-      tableOptions.value.pageSize = val
-      initData()
+    const initData = () => {
+      const { pageNum, pageSize } = tableOptions.value
+      console.log(pageNum, pageSize)
+      // tableOptions.value.tableData = []
     }
-    const handleCurrentChange = (val: number) => {
-      tableOptions.value.pageNum = val
-      initData()
-    }
-
+    const tableOptions = useTableOptions({ initData })
     const dialogRef = ref<any>(null)
     const currRow = ref({})
     const handleClick = (type: string, value: {}) => {
@@ -69,53 +68,7 @@ export default defineComponent({
           break
       }
     }
-    const tableOptions = ref({
-      tableData: [
-        {
-          id: 1,
-          name: 'APPLE'
-        },
-        {
-          id: 2,
-          name: 'XIAOMI'
-        },
-        {
-          id: 3,
-          name: 'HUAWEI'
-        }
-      ],
-      tableColumn: [
-        {
-          type: 'index',
-          label: '序号',
-          width: '100'
-        },
-        {
-          prop: 'id',
-          label: 'ID',
-          minWidth: '50'
-        },
-        {
-          prop: 'name',
-          label: '品牌',
-          minWidth: '200'
-        },
-        {
-          prop: 'operation',
-          label: '操作',
-          width: '140',
-          fixed: 'right',
-          slotName: 'operation'
-        }
-      ],
-      showIndex: true,
-      pageNum: 0,
-      pageSize: 10,
-      pageSizes: [10, 20, 30],
-      handleSizeChange,
-      handleCurrentChange,
-      total: 0
-    })
+
     return {
       tableOptions,
       handleClick,
