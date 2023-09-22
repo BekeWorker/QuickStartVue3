@@ -1,17 +1,23 @@
 <template>
   <div class="form-wrap">
-    <el-form :model="ruleForm" :rules="rules" :label-width="labelWidth" :size="size">
+    <el-form
+      ref="ruleFormRef"
+      :size="size"
+      :rules="rules"
+      :model="formData"
+      :label-width="labelWidth"
+    >
       <template v-for="item in formItems" :key="item.label">
         <template v-if="item.slotName">
           <slot :name="item.slotName" :row="item"></slot>
         </template>
         <el-form-item v-else v-bind="item">
           <template v-if="item.type === 'input'">
-            <el-input v-model="ruleForm[item.field]" :placeholder="item.placeHolder"></el-input>
+            <el-input v-model="formData[item.field]" :placeholder="item.placeHolder"></el-input>
           </template>
           <template v-if="item.type === 'select'">
             <el-select
-              v-model="ruleForm[item.field]"
+              v-model="formData[item.field]"
               :placeholder="item.placeHolder"
               style="width: 100%"
             >
@@ -20,12 +26,16 @@
               </template>
             </el-select>
           </template>
-          <template v-if="item.type === 'textarea'">
-            <el-input v-model="ruleForm[item.field]" :placeholder="item.placeHolder"></el-input>
-          </template>
+          <!-- <template v-if="item.type === 'textarea'">
+            <el-input v-model="formData[item.field]" :placeholder="item.placeHolder"></el-input>
+          </template> -->
         </el-form-item>
       </template>
     </el-form>
+    <div>
+      <el-button type="primary" @click="submitForm(ruleFormRef)">确定</el-button>
+      <el-button @click="cancelForm()">取消</el-button>
+    </div>
   </div>
 </template>
 
@@ -41,19 +51,34 @@ export default defineComponent({
       required: true
     }
   },
-  setup(props) {
+  emits: ['handleClick'],
+  setup(props, { emit }) {
+    const ruleFormRef = ref<FormInstance>()
+
+    const size = ref(props.formOptions.size)
+    const rules = ref(props.formOptions.rules)
+    const formData = ref(props.formOptions.formData)
+    const formItems = ref(props.formOptions.formItems)
+    const labelWidth = ref(props.formOptions.labelWidth)
+
     const submitForm = async (formEl: FormInstance | undefined) => {
       if (!formEl) return
-      await formEl.validate((valid, field) => {
-        if (valid) {
-          console.log('submit!')
-        } else {
-          console.log('error submit!', field)
-        }
+      await formEl.validate((valid) => {
+        if (valid) emit('handleClick', '确定', formData.value)
       })
     }
+    const cancelForm = () => {
+      emit('handleClick', '取消')
+    }
     return {
-      ...props.formOptions
+      size,
+      rules,
+      formData,
+      formItems,
+      labelWidth,
+      cancelForm,
+      submitForm,
+      ruleFormRef
     }
   }
 })

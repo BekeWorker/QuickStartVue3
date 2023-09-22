@@ -23,14 +23,14 @@
       <template #content>
         <div v-if="dialogRef.dialogData.title === '删除'">确认删除{{ currRow.brand }}吗？</div>
         <div v-else>
-          <base-form ref="formRef" :formOptions="formOptions">
+          <base-form :formOptions="formOptions" @handleClick="handleClick">
             <!-- slot示例 -->
             <template #desc="{ row }">
               <el-form-item v-bind="row">
                 <el-input
                   type="textarea"
                   :autosize="{ minRows: 2, maxRows: 4 }"
-                  v-model="formOptions.ruleForm[row.field]"
+                  v-model="formOptions.formData[row.field]"
                   :placeholder="row.placeHolder"
                 >
                 </el-input>
@@ -38,10 +38,6 @@
             </template>
           </base-form>
         </div>
-      </template>
-      <template #footer>
-        <el-button type="primary" @click="handleClick('确定', {})">确定</el-button>
-        <el-button @click="handleClick('取消', {})">取消</el-button>
       </template>
     </base-dialog>
   </div>
@@ -75,19 +71,18 @@ export default defineComponent({
 
     const currRow = ref({})
     const dialogRef = ref<any>(null)
-    const formRef = ref<any>(null)
-    const handleClick = (type: string, value: {}) => {
+    const handleClick = (type: string, value: object = {}) => {
       switch (type) {
         case '删除':
         case '编辑':
         case '新增':
           currRow.value = value
-          formOptions.value.ruleForm = value
+          formOptions.value.formData = value
           dialogRef.value.changeDialogData(type, true)
           break
         case '确定':
-          // formRef.value.submitForm()
-          // console.log(formRef.value)
+          console.log({ value })
+          dialogRef.value.changeDialogData('关闭', false)
           break
         default:
           currRow.value = {}
@@ -101,7 +96,6 @@ export default defineComponent({
       formOptions,
       handleClick,
       dialogRef,
-      formRef,
       currRow
     }
   }

@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import type { FormRules } from 'element-plus'
 
 interface RuleForm {
@@ -10,12 +10,12 @@ interface RuleForm {
 const useFormOptions = (params: any) => {
   const formOptions = ref<any>(null)
   formOptions.value = {
-    ruleForm: ref<RuleForm>({
+    formData: reactive<RuleForm>({
       brand: '',
       country: 0,
       desc: ''
     }),
-    rules: ref<FormRules<RuleForm>>({
+    rules: reactive<FormRules<RuleForm>>({
       brand: [{ required: true, message: '请输入品牌', trigger: 'blur' }],
       country: [{ required: true, message: '请选择国家', trigger: 'change' }],
       desc: [{ required: true, message: '请输入描述', trigger: 'blur' }]
